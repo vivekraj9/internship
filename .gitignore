@@ -1,0 +1,56 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# Pytest
+.pytest_cache/
+.cache/
+.coverage
+htmlcov/
+
+# -------------------------
+# FastAPI specific
+# -------------------------
+# Uvicorn reload artifacts
+*.reload
+
+# -------------------------
+# VS Code
+# -------------------------
+.vscode/
+
+# -------------------------
+# OS-specific
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# MongoDB
+# -------------------------
+dump/           # If you're dumping MongoDB backups here
+*.mongo.json    # Any exported json data files
+*.bson          # BSON data dumps
+
+# -------------------------
+# Miscellaneous
+# -------------------------
+*.sqlite3
+*.db
