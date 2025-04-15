@@ -9,3 +9,5 @@ client = MongoClient(MONGO_URI)
 
 db = client["auth_db"]
 users_collection = db["users"]
+
+blacklisted_tokens_collection = db["blacklisted_tokens"]
