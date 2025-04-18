@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  fastapi:
+    build: ./backend  # Adjust path to your backend Dockerfile directory
+    container_name: fastapi-app
+    restart: always
+    env_file:
+      - ./backend/.env # Adjust path to your backend .env file
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend:/app # Adjust path to your backend code
+
+  frontend:
+    build: ./frontend # Adjust path to your frontend Dockerfile directory
+    container_name: react-app
+    restart: always
+    ports:
+      - "3000:80" # Map host port 3000 to container port 80 (Nginx)
+    depends_on:
+      - fastapi # Ensure backend is running before frontend
+    volumes:
+      - ./frontend:/app # Mount your frontend code for potential live updates (development)
+
+volumes:
+  mongo_data:
